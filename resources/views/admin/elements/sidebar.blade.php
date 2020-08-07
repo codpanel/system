@@ -9,9 +9,9 @@
 <a href=""><i class="icon-price-tag3"></i> <span>  الطلبات الجديدة </span></a>
 <ul>
 <li><a href="{{ route('dashboard.lists.create') }}">اضافة طلب جديد</a></li>
-<li><a href="{{ route('dashboard.data') }}">     كل الطلبات الجديدة   <span class="label bg-blue-400"> </span>    </a></li>
-<li><a href="{{ route('dashboard.data') }}">   الطلبات المحذوفة   <span class="label bg-blue-400"> </span>            </a></li>
-<li><a href="{{ route('dashboard.data') }}">   الطلبات المكررة   <span class="label bg-blue-400">   </span>            </a></li>
+<li><a href="{{ route('dashboard.data.new') }}">     كل الطلبات الجديدة   <span class="label bg-blue-400"> </span>    </a></li>
+<li><a href="{{ route('dashboard.data.deleted') }}">   الطلبات المحذوفة   <span class="label bg-blue-400"> </span>            </a></li>
+<li><a href="{{ route('dashboard.data.duplicated') }}">   الطلبات المكررة   <span class="label bg-blue-400">   </span>            </a></li>
 </ul>
 </li>
    
@@ -20,10 +20,10 @@
 <li>
 <a href=""><i class="icon-phone-wave"></i> <span>  الموظفات</span></a>
 <ul>
-<li><a href="{{ route('dashboard.lists') }}"> طلبات قيد المعالجة   <span class="label bg-blue-400">  </span>     </a></li>
-<li><a href="{{ route('dashboard.lists') }}"> الطلبات الملغية   <span class="label bg-blue-400">  </span>                             </a></li>
-<li><a href="{{ route('dashboard.lists') }}">  الطلبات لإعادة الإتصال  <span class="label bg-blue-400">   </span>                            </a></li>
-<li><a href="{{ route('dashboard.lists') }}">  الطلبات لا تجيب <span class="label bg-blue-400">   </span>                             </a></li>
+<li><a href="{{ route('dashboard.employees.pending') }}"> طلبات قيد المعالجة   <span class="label bg-blue-400">  </span>     </a></li>
+<li><a href="{{ route('dashboard.employees.canceled') }}"> طلبات ملغية   <span class="label bg-blue-400">  </span>                             </a></li>
+<li><a href="{{ route('dashboard.employees.recall') }}">  طلبات لإعادة الإتصال  <span class="label bg-blue-400">   </span>                            </a></li>
+<li><a href="{{ route('dashboard.employees.unanswered') }}">  طلبات لا تجيب <span class="label bg-blue-400">   </span>                             </a></li>
 </ul>
 </li>
                       
@@ -33,11 +33,11 @@
 <li>
 <a href=""><i class="icon-truck"></i> <span>  الموزعين</span></a>
 <ul>
-<li><a href="{{ route('dashboard.Sentlists') }}">         طلبات في انتظار التوزيع    <span class="label bg-blue-400">    </span>        </a></li>
-<li><a href="{{ route('dashboard.Sentlists') }}">               الطلبات التي تم توزيعها <span class="label bg-blue-400">       </span>          </a></li>
-<li><a href="{{ route('dashboard.Sentlists') }}">                 الطلبات الملغية <span class="label bg-blue-400">     </span>         </a></li>
-<li><a href="{{ route('dashboard.Sentlists') }}">                الطلبات لا تجيب         <span class="label bg-blue-400">     </span>                </a></li>
-<li><a href="{{ route('dashboard.Sentlists') }}">                الطلبات لإعادة الإتصال        <span class="label bg-blue-400">      </span>              </a></li>
+<li><a href="{{ route('dashboard.delivers.pending') }}">         طلبات في انتظار التوزيع    <span class="label bg-blue-400">    </span>        </a></li>
+<li><a href="{{ route('dashboard.delivers.delivered') }}">               طلبات تم توزيعها <span class="label bg-blue-400">       </span>          </a></li>
+<li><a href="{{ route('dashboard.delivers.canceled') }}">                 طلبات ملغية <span class="label bg-blue-400">     </span>         </a></li>
+<li><a href="{{ route('dashboard.delivers.unanswered') }}">                طلبات لا تجيب        <span class="label bg-blue-400">     </span>                </a></li>
+<li><a href="{{ route('dashboard.delivers.recall') }}">                طلبات لإعادة الإتصال        <span class="label bg-blue-400">      </span>              </a></li>
 </ul>
 </li>   
 
@@ -80,7 +80,7 @@
 </span></a></li>   
 
 
-<li><a href="{{ route('dashboard.lists.all') }}"><i class="icon-home4"></i> <span>جميع الطلبات</span></a></li>
+<li><a href="{{ route('dashboard.pages.allorders') }}"><i class="icon-home4"></i> <span>جميع الطلبات</span></a></li>
 
       
        
@@ -101,7 +101,7 @@
 
       
 
-<li><a href="{{ route('dashboard.suivi') }}"> <i class="icon-stats-growth2"></i> 
+<li><a href="{{ route('dashboard.pages.suivi') }}"> <i class="icon-stats-growth2"></i> 
 <span> 
  لجنة المتابعة
 

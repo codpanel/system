@@ -1,28 +1,28 @@
-{% extends "admin/layout.twig" %}
+@extends('admin.layout')
 
-{% block content %}
+@section('content')
 
 
       
 
 
+@include('admin.elements.flash')
 
-{% include 'admin/elements/flash.twig' %}
 
 <div class="content" style='margin-top:45px;'>   
 
 
 <div class="panel from_to hidden">
 <div class="panel-body">
-<form class="heading-form mg-b-25" id="form-stats-From-To" autocomplete="off" method="GET" action="{{path_for('admin.index')}}">
+<form class="heading-form mg-b-25" id="form-stats-From-To" autocomplete="off" method="GET" action="">
 <div class="section-wrapper mg-t-20">
        
           <div class="row">
             <div class="col-lg-5">
-                <input value='{{from}}' type="text" name="from" readonly='true' placeholder="التاريخ من" class="form-control" id="datepickerFrom">
+                <input value='' type="text" name="from" readonly='true' placeholder="التاريخ من" class="form-control" id="datepickerFrom">
             </div><!-- col -->
             <div class="col-lg-5 mg-t-40 mg-lg-t-0">
-                <input type="text" name="to" value='{{to}}'readonly='true' placeholder="التاريخ الى" class="form-control" id="datepickerTo">
+                <input type="text" name="to" value=''readonly='true' placeholder="التاريخ الى" class="form-control" id="datepickerTo">
             </div><!-- col -->
             <div class="col-lg-2 mg-t-40 mg-lg-t-0">
                 <input type="submit" class='btn  btn-block btn-primary' value='بحث' />
@@ -54,7 +54,7 @@
          <div class="panel panel-body bg-blue-400 has-bg-image ">
             <div class="media no-margin">
                <div class="media-body">
-                  <h3 class="no-margin">   <span>{{earned}}</span>      درهم </h3>
+                  <h3 class="no-margin">   <span></span>      درهم </h3>
                   <span class="text-uppercase text-size-mini"> مجموع الأرباح لهذا الأيوم </span>
                </div>
                <div class="media-right media-middle"><i class="icon-cash3 icon-3x opacity-75"></i></div>
@@ -66,7 +66,7 @@
          <div class="panel panel-body bg-danger-400 has-bg-image">
             <div class="media no-margin">
                <div class="media-body">
-                  <h3 class="no-margin">{{totalNewOrders}}</h3>
+                  <h3 class="no-margin"></h3>
                   <span class="text-uppercase text-size-mini">عدد الطلبات الجديدة</span>
                </div>
                <div class="media-right media-middle"><i class="icon-file-empty2 icon-3x opacity-75"></i></div>
@@ -78,7 +78,7 @@
          <div class="panel panel-body bg-success-400 has-bg-image">
             <div class="media no-margin">
                <div class="media-body text-left">
-                  <h3 class="no-margin">{{statsdelivers.waiting}}</h3>
+                  <h3 class="no-margin"></h3>
                   <span class="text-uppercase text-size-mini">عدد الطلبات في  انتظار التوزيع</span>
                </div>
                <div class="media-right media-middle"><i class="icon-users2 icon-3x opacity-75"></i></div>
@@ -90,7 +90,7 @@
          <div class="panel panel-body bg-indigo-400 has-bg-image">
             <div class="media no-margin">
                <div class="media-body text-left">
-                  <h3 class="no-margin">{{statsemployee.waiting}}</h3>
+                  <h3 class="no-margin"></h3>
                   <span class="text-uppercase text-size-mini"> الطلبات  قيد المعالجة  </span>
                </div>
                <div class="media-right media-middle"><i class="icon-phone-wave icon-3x opacity-75"></i></div>
@@ -120,10 +120,10 @@
 
                       {% for item in cities %}
                       <li>
-                                <label>( {{item.count}} ) {{item.city}}  <span>{{item.percent}}</span></label>
+                                <label>(  )   <span></span></label>
                         <div class="progress progress-xxs">
-                          <div class="progress-bar progress-bar-{{item.color}}" style="width: {{item.percent}}">
-                            <span class="sr-only">{{item.count}}</span>
+                          <div class="progress-bar progress-bar-" style="width: ">
+                            <span class="sr-only"></span>
                           </div>
                         </div>
                             </li>
@@ -156,10 +156,10 @@
 
                       {% for item in products %}
                       <li>
-                        <label> ( الكمية :  {{item.quantity}}) {{item.product}}  <span>{{item.percent}}</span></label>
+                        <label> ( الكمية :    <span></span></label>
                         <div class="progress progress-xxs">
-                          <div class="progress-bar progress-bar-{{item.color}}" style="width: {{item.percent}}">
-                            <span class="sr-only">{{item.count}}</span>
+                          <div class="progress-bar progress-bar-" style="width: ">
+                            <span class="sr-only"></span>
                           </div>
                         </div>
                             </li>
@@ -193,8 +193,8 @@
                   <ul class="list-feed">
                     {% for item in cash %}
                     <li class="border-warning-400">
-                      <div class="text-muted text-size-small mb-5">{{item.day}} - ({{item.count}}) طلب </div>
-                      {{item.total}} درهم
+                      <div class="text-muted text-size-small mb-5"> طلب </div>
+                       درهم
                     </li>
                     {% endfor %}
                   </ul>
@@ -217,28 +217,28 @@
                 
                  
                 <div class="panel-body">
-                                  <h6 class="slim-panel-title text-left">{{item.name}}</h6>
+                                  <h6 class="slim-panel-title text-left"></h6>
 
                     <table class="table border-dashed no-border mg-t-25">
                             <tr>
                                 <td>الطلبات التي تم تسليمها</td>
-                                <td>{{item.TotalDeliverd}}</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>الطلبات التي تم الغائها</td>
-                                <td>{{item.TotalCanceled}}</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>الطلبات في انتظار التسليم</td>
-                                <td>{{item.TotalWaiting}}</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td> الطلبات التي لا تجيب</td>
-                                <td>{{item.TotalNoAnswer}}</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>حالة اعادة الإتصال</td>
-                                <td>{{item.TotalRecall}}</td>
+                                <td></td>
                             </tr>
                         </table>
                 </div>
@@ -261,21 +261,21 @@
 
                  
                 <div class="panel-body">
-                                                 <h6 class="slim-panel-title  text-left" >{{item.name}}</h6>
+                                                 <h6 class="slim-panel-title  text-left" ></h6>
 
                     <table class="table border-dashed no-border mg-t-25">
                             
                             <tr>
                                 <td>الطلبات التي تم الغائها</td>
-                                <td>{{item.TotalCanceled}}</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>الطلبات قيد المعالجة</td>
-                                <td>{{item.TotalWaiting}}</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td> الطلبات بالكامل</td>
-                                <td>{{item.TotalCanceled + item.TotalWaiting }}</td>
+                                <td></td>
                             </tr>
                         </table>
                 </div>
@@ -286,14 +286,8 @@
 
 
 
-
-
-
-
-
-
 </div>
 
 </div>
 
-{% endblock %}
+@endsection

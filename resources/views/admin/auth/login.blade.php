@@ -38,15 +38,11 @@
 <div class="page-content">
     <div class="content-wrapper">
         <div class="content">           
-            <form method="POST" action="" id="LoginForm" autocomplete="off">
+            <form method="POST" action="{{ route('system.auth') }}" id="" autocomplete="off">
                 <div class="panel panel-body login-form">
-                    
-                
-                    <!-- To Disable auto saving Password -->
-                    <input style="opacity: 0;position: absolute;">
-                    <input type="password" style="opacity: 0;position: absolute;">
-                    <!-- To Disable auto saving Password -->
-                    
+                    @csrf
+                    @include('admin.elements.flash')
+                  
                     <div class="text-center">
                         <div class="icon-object border-slate-300 text-slate-300"><i class="icon-reading"></i></div>
                         <h5 class="content-group"><small class="display-block">أدخل المعلومات أسفله</small></h5>

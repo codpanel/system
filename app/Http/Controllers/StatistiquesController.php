@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class EmployeeController extends Controller
+class StatistiquesController extends Controller
 {
     
     public function index()
@@ -42,4 +42,19 @@ class EmployeeController extends Controller
         //
     }
 
+    
+    public function statistiques()
+    {
+        return view('admin.statistiques.index');
+    }
+
+    public function statistiques_delivers()
+    {
+        return view('admin.statistiques.delivers');
+    }
+
+    public function statistiques_employees()
+    {
+        return view('admin.statistiques.employees');
+    }
 }

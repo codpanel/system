@@ -37,8 +37,8 @@
                     <i class="caret"></i>
                 </a>
 
-                <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a href=""><i class="icon-switch2"></i></a></li>
+                <ul class="dropdown-menu dropdown-menu-right" >
+                    <li><a href="{{ route('system.logout') }}"><i class="icon-switch2"></i>تسجيل الخروج</a></li>
                 </ul>
             </li>
         </ul>

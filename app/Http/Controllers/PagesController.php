@@ -52,44 +52,42 @@ class PagesController extends Controller
     public function cities()
     {
         $cities = Cities::paginate(10);
-        return view('admin.auth.cities', ['cities' => $cities]);
+        return view('admin.pages.cities', ['cities' => $cities]);
     }
 
     public function cash()
     {
-        return view('admin.auth.cash');
+        return view('admin.pages.cash');
     }
 
     public function revenue()
     {
-        return view('admin.auth.revenue');
+        return view('admin.pages.revenue');
     }
 
     public function search()
     {
-        return view('admin.auth.search');
+        return view('admin.pages.search');
     }
 
     public function double()
     {
-        return view('admin.auth.double');
-    }
-
-    public function statistiques()
-    {
-        return view('admin.auth.statistiques');
-    }
-
-    public function statistiques_delivers()
-    {
-    }
-
-    public function statistiques_employees()
-    {
+        return view('admin.pages.double');
     }
 
     public function reception()
     {
-        return view('admin.auth.reception');
+        return view('admin.pages.reception');
+    }
+
+
+    public function suivi()
+    {
+        return view('admin.pages.suivi');
+    }
+
+    public function allorders()
+    {
+        return view('admin.pages.all-lists');
     }
 }

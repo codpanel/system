@@ -19,11 +19,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/system', 'SystemPages@login')->Name('system.login');
+Route::post('/system/login', 'SystemPages@attempt')->Name('system.auth');
+Route::get('/system/logout', 'SystemPages@logout')->Name('system.logout');
+
+
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function ($container) {
+Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'system'], function ($container) {
 
-
+    Route::get('/', 'HomeController@index')->name('home');
 
     Route::group(['prefix' => '/deliver/listing'], function () {
         Route::get('/new/', 'DeliverController@index')->Name('deliver.orders');
@@ -43,11 +48,15 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function ($contain
         //Route::get('/no/response/{number}/', 'EmployeeController@NoResponse')->Name('employee.orders.NoResponse.details');    
     });
 
+    Route::group(['prefix' => 'statistiques'], function () {
+    Route::any('/', 'StatistiquesController@statistiques')->Name('statistiques');
+    Route::any('daily/employees', 'StatistiquesController@statistiques_employees')->Name('statistiques.employees');
+    Route::any('daily/delivers', 'StatistiquesController@statistiques_delivers')->Name('statistiques.delivers'); 
+    });
 
 
-    Route::any('/statistiques', 'PagesController@statistiques')->Name('statistiques');
-    Route::any('/statistiques/daily/employees', 'PagesController@statistiques_employees')->Name('statistiques.employees');
-    Route::any('/statistiques/daily/delivers', 'PagesController@statistiques_delivers')->Name('statistiques.delivers');
+
+    
     Route::any('/reception', 'PagesController@reception')->Name('reception');
     Route::any('/confirmation', 'ListsController@confirmation')->Name('confirmation');
     Route::any('/suivi', 'ListsController@suivi')->Name('suivi.listing');
@@ -58,6 +67,8 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function ($contain
     Route::get('/cash', 'PagesController@cash')->Name('pages.cash');
     Route::get('/export/revenue', 'PagesController@ExportRevenue')->Name('export.revenue');
     Route::get('/double', 'PagesController@double')->Name('pages.duplique');
+    Route::any('/suivi', 'PagesController@suivi')->Name('pages.suivi');
+    Route::any('/allorders', 'PagesController@allorders')->Name('pages.allorders');
 
     //citeis
     Route::any('/cities', 'CitiesController@index')->Name('pages.cities');
@@ -65,7 +76,7 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function ($contain
 
 
     // Dashboard index
-    Route::get('/', 'ListsController@stats')->Name('admin.index');
+    Route::get('/', 'ListsController@index')->Name('admin.index');
 
     Route::any('/deliver/cash/', 'PagesController@Delivercash')->Name('deliver.cash');
     Route::any('/loadHistory', 'ListsController@loadHistory');
@@ -98,6 +109,9 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function ($contain
     // new orders system
     Route::group(['prefix' => '/data'], function () {
         Route::get('/', 'DataController@index')->Name('data');
+        Route::get('/deleted', 'DataController@deleted')->Name('data.deleted');
+        Route::get('/duplicated', 'DataController@duplicated')->Name('data.duplicated');
+        Route::get('/new', 'DataController@new')->Name('data.new');
 
 
 
@@ -197,44 +211,19 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function ($contain
         Route::post('/save', 'ChargesController@save')->Name('charges.save');
         Route::get('/paied/{id}', 'ChargesController@paied')->Name('charges.paied');
     });
+
+    Route::group(['prefix' => '/employees'], function () {
+        Route::any('/pending', 'EmployeesController@pending')->Name('employees.pending');
+        Route::any('/canceled', 'EmployeesController@canceled')->Name('employees.canceled');
+        Route::any('/recall', 'EmployeesController@recall')->Name('employees.recall');
+        Route::any('/unanswered', 'EmployeesController@unanswered')->Name('employees.unanswered');
+    });
+
+    Route::group(['prefix' => '/delivers'], function () {
+        Route::any('/pending', 'DeliversController@pending')->Name('delivers.pending');
+        Route::any('/delivered', 'DeliversController@delivered')->Name('delivers.delivered');
+        Route::any('/canceled', 'DeliversController@canceled')->Name('delivers.canceled');
+        Route::any('/recall', 'DeliversController@recall')->Name('delivers.recall');
+        Route::any('/unanswered', 'DeliversController@unanswered')->Name('delivers.unanswered');
+    });
 });
-
-
-Route::post('/storeApi//', function ($request, $response, $args) {
-    $data = [
-        'name'  =>  $_POST['name'],
-        'tel'  =>  $_POST['tel'],
-        'adress'  =>  $_POST['adress'],
-        'city'  =>  $_POST['city'],
-        'quantity' => $_POST['quantity'],
-        'price' =>  $_POST['price'],
-        'source' =>  $_POST['source'],
-        'ProductReference' => $_POST['ProductReference'],
-    ];
-
-    $newstring = substr($_POST['tel'], -8);
-    $foundAlreadyInLists     =   Lists::all();
-    $foundAlreadyInNeworders =   NewOrders::all();
-
-    $exist = false;
-    foreach ($foundAlreadyInLists as $order) {
-        if (substr($order->tel, -8) == $newstring) {
-            $exist = true;
-        }
-    }
-    foreach ($foundAlreadyInNeworders as $order) {
-        if (substr($order->tel, -8) == $newstring) {
-            $exist = true;
-        }
-    }
-
-    if ($exist == true) {
-        $data['duplicated_at'] = \Carbon\Carbon::Now();
-    }
-
-    NewOrders::create($data);
-});
-
-
-Route::get('/system', 'SystemPages@login');
-Route::get('/system/login', 'SystemPages@attempt');

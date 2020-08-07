@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class DataController extends Controller
+class DeliversController extends Controller
 {
     
     public function index()
     {
-        return view('admin.data.index');
+        //
     }
 
     
@@ -42,21 +42,31 @@ class DataController extends Controller
         //
     }
 
-    
-    public function deleted()
+    public function pending()
     {
-        return view('admin.data.deleted');
+        return view('admin.delivers.pending');
+    }
+
+    public function delivered()
+    {
+        return view('admin.delivers.delivered');
     }
 
 
-    public function duplicated()
+    public function canceled()
     {
-        return view('admin.data.duplicated');
+        return view('admin.delivers.canceled');
     }
 
 
-    public function new()
+    public function recall()
     {
-        return view('admin.data.new');
+        return view('admin.delivers.recall');
+    }
+
+
+    public function unanswered()
+    {
+        return view('admin.delivers.unanswered');
     }
 }

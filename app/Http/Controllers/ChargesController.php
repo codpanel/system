@@ -14,7 +14,7 @@ class ChargesController extends Controller
         $charges = Charges::paginate(10);
         $sumval = Charges::whereNull('paied_at')->sum('value');
    
-        return view('admin.auth.charges', ['charges' => $charges,'sumval' => $sumval]);
+        return view('admin.pages.charges', ['charges' => $charges,'sumval' => $sumval]);
     }
 
     
