@@ -48,7 +48,7 @@
                         <h5 class="content-group"><small class="display-block">أدخل المعلومات أسفله</small></h5>
                     </div>
                     <div class="form-group has-feedback has-feedback-left">
-                        <input type="text"  autocomplete="false" tabindex="1"  class="form-control frequired" name="user_login" placeholder="إسم المستخدم أو البريد الإلكتروني" maxlength="35" required autofocus/>
+                        <input type="text"  autocomplete="false" tabindex="1"  class="form-control frequired" name="user_login" placeholder="البريد الإلكتروني" maxlength="35" required autofocus/>
                         <div class="form-control-feedback">
                             <i class="icon-user text-muted"></i>
                         </div>

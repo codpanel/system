@@ -161,12 +161,16 @@ class Lists extends Model
 
     public function deliver()
     {
-        return $this->belongsTo('\App\Models\User', 'DeliverID');
+        return $this->belongsTo('\App\User', 'DeliverID')->withDefault([
+            'username' => 'غير موجود',
+        ]);
     }
 
     public function employee()
     {
-        return $this->belongsTo('\App\Models\User', 'mowadafaID');
+        return $this->belongsTo('\App\User','mowadafaID')->withDefault([
+            'username' => 'غير موجود',
+        ]);
     }
 
     public function city()

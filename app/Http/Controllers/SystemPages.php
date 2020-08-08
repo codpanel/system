@@ -12,6 +12,8 @@ class SystemPages extends Controller
     
 
     public $dashboard = '/dashboard';
+    public $deliver = '/deliver';
+    public $employee = '/employee';
     public $login = '/system';
 
     public function index()
@@ -57,17 +59,31 @@ class SystemPages extends Controller
     public function attempt(Request $request)
     {
 
-
-        $this->validate($request, [
+        $rules = [
             'user_login'   => 'required|email',
             'pass_login' => 'required|min:1'
-        ]);
+        ];
 
-        if (Auth::guard()->attempt(['email' => $request->user_login, 'password' => $request->pass_login])) {
+        $messages = [
+            'user_login.required'    => trans("email.required"),
+            'user_login.email'       => trans("email.email"),
+            'pass_login.required' => trans("password.required"),
+        ];
+
+        $request->validate($rules, $messages);
+
+
+        if (Auth::guard()->attempt(['email' => $request->user_login, 'password' => $request->pass_login]) && Auth::user()->role == 'admin') {
             return redirect()->intended($this->dashboard);
         }
+        if (Auth::guard()->attempt(['email' => $request->user_login, 'password' => $request->pass_login]) && Auth::user()->role == 'deliver') {
+            return redirect()->intended($this->deliver);
+        }
+        if (Auth::guard()->attempt(['email' => $request->user_login, 'password' => $request->pass_login]) && Auth::user()->role == 'employee') {
+            return redirect()->intended($this->employee);
+        }
         
-        return back()->withInput($request->only('email', 'remember'))->with('error',trans('user.wrong.auth'));
+        return back()->withInput($request->only('user_login', 'remember'))->with('error',trans('user.wrong.auth'));
     }
 
     public function logout(){

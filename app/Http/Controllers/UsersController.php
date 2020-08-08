@@ -36,7 +36,7 @@ class UsersController extends Controller
 
         $messages = [
             'email.required'    => trans("email.required"),
-            'email.email'       => trans("email.unique"),
+            'email.email'       => trans("email.email"),
             'email.unique'      => trans("name.required"),
             'password.required' => trans("password.required"),
             'password.min'      => trans("password.min"),

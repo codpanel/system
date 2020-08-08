@@ -37,12 +37,6 @@ class EmployeesController extends Controller
     }
 
     
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    
     public function pending()
     {
         return view('admin.employees.pending');

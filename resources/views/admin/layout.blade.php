@@ -94,8 +94,11 @@
 		<!-- Page content -->
 		<div class="page-content">
        
+        @if(Auth::user()->role == 'admin')
          <!-- sidbar -->
         @include('admin.elements.sidebar')
+
+        @endif
 
         @yield('content')
         

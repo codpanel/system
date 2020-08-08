@@ -12,9 +12,9 @@
     <div class="navbar-collapse collapse" id="navbar-mobile">
         <ul class="nav navbar-nav">
 
-            
+            @if(Auth::user()->role == 'admin')
             <li><a class="sidebar-control sidebar-main-toggle hidden-xs "><i class="icon-paragraph-justify3"></i></a></li>
-            
+            @endif
             
            
             

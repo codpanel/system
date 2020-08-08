@@ -26,7 +26,7 @@ Route::get('/system/logout', 'SystemPages@logout')->Name('system.logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'system'], function ($container) {
+Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'System'], function ($container) {
 
     Route::get('/', 'HomeController@index')->name('home');
 
@@ -49,21 +49,21 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'sy
     });
 
     Route::group(['prefix' => 'statistiques'], function () {
-    Route::any('/', 'StatistiquesController@statistiques')->Name('statistiques');
-    Route::any('daily/employees', 'StatistiquesController@statistiques_employees')->Name('statistiques.employees');
-    Route::any('daily/delivers', 'StatistiquesController@statistiques_delivers')->Name('statistiques.delivers'); 
+        Route::any('/', 'StatistiquesController@statistiques')->Name('statistiques');
+        Route::any('daily/employees', 'StatistiquesController@statistiques_employees')->Name('statistiques.employees');
+        Route::any('daily/delivers', 'StatistiquesController@statistiques_delivers')->Name('statistiques.delivers');
     });
 
 
 
-    
+
     Route::any('/reception', 'PagesController@reception')->Name('reception');
     Route::any('/confirmation', 'ListsController@confirmation')->Name('confirmation');
     Route::any('/suivi', 'ListsController@suivi')->Name('suivi.listing');
     Route::get('/revenue', 'PagesController@revenue')->Name('pages.revenue');
     Route::get('/revenue/spent/{date}/{ads}', 'PagesController@ads')->Name('pages.ads');
     Route::get('/search', 'PagesController@search')->Name('pages.find');
-    Route::any('/verfiey/{date}/{money}/{deliver_id}', 'ListsController@VerfiedCash')->Name('cash.verified');    
+    Route::any('/verfiey/{date}/{money}/{deliver_id}', 'ListsController@VerfiedCash')->Name('cash.verified');
     Route::get('/cash', 'PagesController@cash')->Name('pages.cash');
     Route::get('/export/revenue', 'PagesController@ExportRevenue')->Name('export.revenue');
     Route::get('/double', 'PagesController@double')->Name('pages.duplique');
@@ -116,7 +116,7 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'sy
 
 
 
-        
+
         Route::post('/upload/', 'DataController@uploadTheSheet')->Name('data.upload');
         Route::post('/city/', 'DataController@assignToCity')->Name('data.assignToCity');
         Route::any('/product/', 'DataController@assignToProduct')->Name('data.assignToProduct');
@@ -226,4 +226,24 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'sy
         Route::any('/recall', 'DeliversController@recall')->Name('delivers.recall');
         Route::any('/unanswered', 'DeliversController@unanswered')->Name('delivers.unanswered');
     });
+});
+
+Route::group(['prefix' => 'deliver', 'as' => 'deliver.', 'middleware' => 'Deliver'], function ($container) {
+    Route::any('/', 'DeliverController@index')->name('index');
+
+    Route::any('/delivered', 'DeliverController@delivered')->Name('delivered');
+    Route::any('/canceled', 'DeliverController@canceled')->Name('canceled');
+    Route::any('/recall', 'DeliverController@recall')->Name('recall');
+    Route::any('/unanswered', 'DeliverController@unanswered')->Name('unanswered');
+
+});
+
+Route::group(['prefix' => 'employee', 'as' => 'employee.', 'middleware' => 'Employee'], function ($container) {    
+    Route::any('/', 'EmployeeController@index')->name('index');
+
+    Route::any('/pending', 'EmployeeController@pending')->Name('pending');    
+    Route::any('/canceled', 'EmployeeController@canceled')->Name('canceled');
+    Route::any('/recall', 'EmployeeController@recall')->Name('recall');
+    Route::any('/unanswered', 'EmployeeController@unanswered')->Name('unanswered');
+    Route::any('/create', 'EmployeeController@create')->Name('create');
 });

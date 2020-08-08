@@ -144,4 +144,8 @@ class User extends Authenticatable
 
         return false;
     }
+
+    public function lists(){
+        return $this->hasMany('App\Lists');
+    }
 }
