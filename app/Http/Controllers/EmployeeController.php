@@ -11,7 +11,7 @@ class EmployeeController extends Controller
 
     public function index()
     {
-        $lists = Lists::with('employee')->paginate(10);
+        $lists = Lists::with('employee','deliver')->paginate(10);
         //$lists = Lists::where('mowadafaID',Auth::user()->id)->paginate(10);
         return view('employee.index', ['items' => $lists]);
     }

@@ -131,11 +131,7 @@
                 <th><b>المنتوجات</b></th>
                 <th><b>رؤية المعلومات</b></th>
                 <th><b>الحالة</b></th>
-                <th><b>آخر اتصال</b></th>
 
-                <th><b>سبب الإلغاء</b></th>
-
-                <th><b>تاريخ اعادة الإتصال</b></th>
 
                 <th><b>الموظفة</b></th>
                 <th><b>الموزع</b></th>
@@ -169,18 +165,8 @@
             </td>
             <td><span class="label bg-orange-300 label-statue">  {{$item->type}} </span></td>
 
-            <td>{{$item->id}}</td>
-
-            <td>
-              <a class="btn btn-oblong bg-purple btn-block mg-b-10" id="see_reason" data-reason='' href="javascript:;" >سبب الإلغاء</a>
-            </td>
-
-            <td>
-              {{$item->id}}
-            </td>
-
             <td> {{$item->employee->username}}</td>            
-            <td>{{$item->id}}</td>
+            <td> {{$item->deliver->username}}</td>
             <td class="text-center"> 
             <a href="javascript:;"  data-id='' class='btn btn-success show_history'>history</a> </td>
             <td><a class="btn btn-warning" href=''>تعديل</a></td>

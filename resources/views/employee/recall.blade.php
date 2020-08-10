@@ -133,7 +133,6 @@
                 <th><b>الحالة</b></th>
                 <th><b>آخر اتصال</b></th>
 
-                <th><b>سبب الإلغاء</b></th>
 
                 <th><b>تاريخ اعادة الإتصال</b></th>
 
@@ -169,9 +168,6 @@
 
             <td></td>
 
-            <td>
-              <a class="btn btn-oblong bg-purple btn-block mg-b-10" id="see_reason" data-reason='' href="javascript:;" >سبب الإلغاء</a>
-            </td>
 
             <td>
              

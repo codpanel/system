@@ -39,24 +39,24 @@ class EmployeesController extends Controller
     
     public function pending()
     {
-        return view('admin.employees.pending');
+        return view('employee.pending');
     }
 
 
     public function canceled()
     {
-        return view('admin.employees.canceled');
+        return view('employee.canceled');
     }
 
 
     public function recall()
     {
-        return view('admin.employees.recall');
+        return view('employee.recall');
     }
 
 
     public function unanswered()
     {
-        return view('admin.employees.unanswered');
+        return view('employee.unanswered');
     }
 }
