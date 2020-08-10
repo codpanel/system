@@ -137,6 +137,7 @@ return [
     */
 
     'providers' => [
+        Srmklive\PayPal\Providers\PayPalServiceProvider::class,
 
         /*
          * Laravel Framework Service Providers...
@@ -191,6 +192,8 @@ return [
     */
 
     'aliases' => [
+        'PayPal' => Srmklive\PayPal\Facades\PayPal::class,
+
 
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,
