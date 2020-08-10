@@ -118,10 +118,11 @@
              </td>
              <td>
                 <table class="list_products">
+                  
                         <tr>
                             <td>  </td>
-                            <td> x  </td>
-                        </tr>
+                            <td> x </td>
+                        </tr>                  
 
                         <tr> <td colspan="2">المجموع : <b></b> درهم</td></tr>
                 </table>
@@ -131,17 +132,17 @@
              <td><span class="label bg-orange-300 label-statue">  {{$deliver->type}}  </span></td>
 
 
+             
+              <td><b>    {{$deliver->id}}    </b></td>
+               
 
-               <td><b>    {{$deliver->id}}    </b></td>
-
-
-
+               
               <td><b>    {{$deliver->delivred_at}}     </b></td>
-
+              
   
-
+              
               <td><b>     {{$deliver->canceled_at}}    </b></td>
-
+              
 
              <td>
               <a type="button" data-action='true' class="btn btn-primary btn-lg loaddata" data-listID=''>رؤية المعلومات</a>

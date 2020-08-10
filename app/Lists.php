@@ -137,7 +137,7 @@ class Lists extends Model
 
     public function products()
     {
-        return $this->hasMany('\App\Models\MultiSale', 'listID');
+        return $this->hasMany('\App\MultiSale', 'listID');
     }
 
 
@@ -175,12 +175,12 @@ class Lists extends Model
 
     public function city()
     {
-        return $this->belongsTo('\App\Models\Cities', 'cityID');
+        return $this->belongsTo('\App\Cities', 'cityID');
     }
 
 
     public function realcity()
     {
-        return $this->belongsTo('\App\Models\Cities', 'cityID');
+        return $this->belongsTo('\App\Cities', 'cityID');
     }
 }

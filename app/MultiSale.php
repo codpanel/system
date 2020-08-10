@@ -15,11 +15,11 @@ class MultiSale extends Model
     // Get Post User
     public function product()
     {
-        return $this->belongsTo('\App\Models\Product', 'productID');
+        return $this->belongsTo('\App\Product', 'productID');
     }
 
     public function list()
     {
-        return $this->belongsTo('\App\Models\Lists', 'listID');
+        return $this->belongsTo('\App\Lists', 'listID');
     }
 }

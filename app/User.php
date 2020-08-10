@@ -125,7 +125,7 @@ class User extends Authenticatable
     //    
     public function cities()
     {
-        return $this->hasMany('\App\Models\Cities', 'user_id');
+        return $this->hasMany('\App\Cities', 'user_id');
     }
 
 
